@@ -1,0 +1,9 @@
+{
+"name": "cooperation.io",
+"version": "0.0.0",
+  
+"dependencies": {
+    "hyperstream": "~0.3.1",
+    "markdown-directory": "~0.1.0"
+    }
+}
