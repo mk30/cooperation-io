@@ -10,7 +10,7 @@ var server = http.createServer(function (req, res) {
 		 fs.readdir(__dirname + '/articles', function (err, files) {
 			res.end(files.map(function (file) {
 				var title = file.replace(/\.markdown$/, '');
-				return '<div><a href="/article/i' + title + '">'
+				return '<div><a href="/article/' + title + '">'
 					+ title + '</a></div>'
 				;
 			}).join('\n'));
