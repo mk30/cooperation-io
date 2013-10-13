@@ -4,9 +4,16 @@ var hyperstream = require('hyperstream');
 var article = require('markdown-directory')(__dirname + '/articles');
 
 var server = http.createServer(function (req, res) {
+     fs.readdir(__dirname, function (err, files) {
+        res.end(files.map(function (file) {
+            var title = file.replace(/\.markdown$/, '');
+            return '<div><a href="/article/' + title + '">'
+                + title + '</a></div>'
+            ;
+        }).join('\n'));
+
     var m = RegExp('^/article/(.+)').exec(req.url);
     if (!m) return res.end('cats');
-
     res.setHeader('content-type', 'text/html');
     fs.createReadStream(__dirname + '/article.html')
         .pipe(hyperstream({
